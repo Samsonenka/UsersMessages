@@ -7,7 +7,33 @@
 </head>
 <body>
 
-User messages...
+<div>
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Sign Out"/>
+    </form>
+</div>
+<br>
+Users messages...
+<div>
+    <form th:action="@{/addMessage}" method="post">
+        <input type="text" name="text" placeholder="Message">
+
+        <button type="submit" >Ok</button>
+    </form>
+</div>
+
+<div>
+    <table>
+        <tr>
+            <th scope="col">Text</th>
+            <th scope="col">User</th>
+        </tr>
+        <tr scope="col" th:each ="message : ${message}">
+            <td th:utext="${message.text}">...</td>
+            <td th:utext="${message.getAuthorName()}">...</td>
+        </tr>
+    </table>
+</div>
 
 </body>
 </html>
