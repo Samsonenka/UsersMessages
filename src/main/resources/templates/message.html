@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-
+    <link rel="stylesheet" th:href="@{/css.css}" />
     <title>Title</title>
 </head>
 <body>
@@ -23,16 +23,10 @@ Users messages...
 </div>
 
 <div>
-    <table>
-        <tr>
-            <th scope="col">Text</th>
-            <th scope="col">User</th>
-        </tr>
-        <tr scope="col" th:each ="message : ${message}">
-            <td th:utext="${message.text}">...</td>
-            <td th:utext="${message.getAuthorName()}">...</td>
-        </tr>
-    </table>
+    <div class="divBorder" th:each="message : ${message}">
+        <p th:utext="${message.getAuthorName()}"></p>
+        <p th:utext="${message.text}"></p>
+    </div>
 </div>
 
 </body>
