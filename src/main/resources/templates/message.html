@@ -24,6 +24,7 @@ Users messages...
 
 <div>
     <div class="divBorder" th:each="message : ${message}">
+        <img th:src="@{'https://i.ibb.co/1n5YR7C/user.png'}" width="30" height="30" class="d-inline-block align-top mr-2" alt="">
         <p th:utext="${message.getAuthorName()}"></p>
         <p th:utext="${message.text}"></p>
     </div>

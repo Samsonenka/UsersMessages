@@ -1,7 +1,9 @@
 package com.example.usersMessage.controllers;
 
+import com.example.usersMessage.models.Avatar;
 import com.example.usersMessage.models.Role;
 import com.example.usersMessage.models.Users;
+import com.example.usersMessage.repos.AvatarRepo;
 import com.example.usersMessage.repos.UsersRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +21,9 @@ public class RegistrationController {
     @Autowired
     private UsersRepo usersRepo;
 
+    @Autowired
+    private AvatarRepo avatarRepo;
+
     @GetMapping("/registration")
     public String showRegistration(){
 
@@ -31,6 +36,9 @@ public class RegistrationController {
         user.setActive(true);
         user.setRoles(Collections.singleton(Role.USER));
         usersRepo.save(user);
+
+        Avatar newAvatar = new Avatar (user);
+        avatarRepo.save(newAvatar);
 
         return "login";
     }

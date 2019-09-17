@@ -2,6 +2,7 @@ package com.example.usersMessage.controllers;
 
 import com.example.usersMessage.models.Message;
 import com.example.usersMessage.models.Users;
+import com.example.usersMessage.repos.AvatarRepo;
 import com.example.usersMessage.repos.MessageRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -16,6 +17,9 @@ public class MessageController {
 
     @Autowired
     private MessageRepo messageRepo;
+
+    @Autowired
+    private AvatarRepo avatarRepo;
 
     @GetMapping("/showMessage")
     public String showMessage(ModelMap modelMap){
