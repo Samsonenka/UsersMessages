@@ -14,13 +14,10 @@
 </div>
 
 <div>
-    <div>
-        <p th:text="${username}"></p>
-    </div>
-    <div>
-        <img th:src="${useravatar}" width="30" height="30" class="d-inline-block align-top mr-2" alt="">
-        <a th:href="@{/avatarCreateForm}">change</a>
-    </div>
+    <form th:action="@{/avatarCreate}" method="post" >
+        <input required type="text" name="urlAvatar" placeholder="URL...">
+        <button type="submit">Ok</button>
+    </form>
 </div>
 
 </body>
