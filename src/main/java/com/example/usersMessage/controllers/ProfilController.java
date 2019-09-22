@@ -40,6 +40,13 @@ public class ProfilController {
     public String avatarCreate(@AuthenticationPrincipal Users user,
                                @RequestParam String urlAvatar, ModelMap modelMap){
 
+        Avatar avatar = new Avatar();
+        avatar = avatar.findAvatarByUser(avatarRepo.findAll(), user);
+        avatar.setUrl(urlAvatar);
+        avatarRepo.save(avatar);
+
+        modelMap.put("avatar", avatar);
+        modelMap.put("user", user);
 
         return "profile";
     }
