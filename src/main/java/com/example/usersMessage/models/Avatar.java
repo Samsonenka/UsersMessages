@@ -47,4 +47,16 @@ public class Avatar {
     public void setAuthor(Users author) {
         this.author = author;
     }
+
+    public Avatar findAvatarByUser(List<Avatar> all, Users user) {
+
+        Users users;
+
+        for (Avatar avatar: all){
+            if (avatar.getAuthor().getUserID() == user.getUserID()){
+                return avatar;
+            }
+        }
+        return null;
+    }
 }

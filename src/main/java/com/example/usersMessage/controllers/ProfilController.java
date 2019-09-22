@@ -20,7 +20,13 @@ public class ProfilController {
     @GetMapping("/showProfile")
     public String showProfile(@AuthenticationPrincipal Users user, ModelMap modelMap){
 
-        modelMap.put("username", user.getUsername());
+        System.out.println(user.getUserID());
+
+        Avatar avatar = new Avatar();
+        avatar = avatar.findAvatarByUser(avatarRepo.findAll(), user);
+
+        modelMap.put("avatar", avatar);
+        modelMap.put("user", user);
 
         return "profile";
     }
